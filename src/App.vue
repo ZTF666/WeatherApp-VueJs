@@ -13,7 +13,7 @@
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
           <div class="location">{{weather.name}} ,{{weather.sys.country}}</div>
-          <div class="date">{{dataBuilder()}}</div>
+          <div class="date">{{dateBuilder()}}</div>
         </div>
 
         <div class="weather-box">
@@ -30,8 +30,8 @@ export default {
   name: "App",
   data() {
     return {
-      api_key: "169a634dff38c9605d0943f31715f6d5",
-      url_base: "api.openweathermap.org/data/2.5/weather?q=",
+      api_key: "Your_Api_Key",
+      url_base: "https://api.openweathermap.org/data/2.5/",
       query: "",
       weather: {}
     };
@@ -40,7 +40,7 @@ export default {
     fetchWeather(e) {
       if (e.key == "Enter") {
         fetch(
-          `${this.url_base}${this.query}&units=metric$APPID=${this.api_key}`
+          `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
           .then(res => {
             return res.json();
